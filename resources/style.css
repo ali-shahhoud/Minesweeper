@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+  position: relative;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: default;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, system-ui, sans-serif;
+}
+
+main {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.1rem;
+}
+main[data-game-over]::before, main[data-game-won]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 0, 0, 0.25);
+}
+main[data-game-won]::before {
+  background: rgba(0, 255, 0, 0.25);
+}
+main.size2x2 {
+  --size: 2;
+}
+main.size3x3 {
+  --size: 3;
+}
+main.size9x9 {
+  --size: 9;
+}
+
+.field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / var(--size));
+  height: calc(100% / var(--size));
+  background: rgba(80, 80, 80, 0.8);
+  border: 0.1rem solid white;
+  border-radius: 1rem;
+  font-size: 6vh;
+}
+.field::before {
+  content: attr(data-mines-around);
+}
+.field[data-selected] {
+  border-color: green;
+  box-shadow: inset 0 0 0.3rem white;
+}
+.field[data-mines-around="0"] {
+  background: rgba(80, 80, 80, 0.7);
+  color: transparent;
+}
+.field[data-is-open][data-is-mine] {
+  background: red;
+  color: transparent;
+}
+.field:not([data-is-open])::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: black;
+}
+.field[data-is-marked]::after {
+  background: blue;
+}
+
+aside {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 2;
+}
+main[data-game-won] + aside, main[data-game-over] + aside {
+  display: flex;
+}
+
+aside input {
+  color: white;
+  font-size: 1.8rem;
+  line-height: 100%;
+  font-weight: 500;
+  margin: 2rem;
+  padding: 0.8rem 1.5rem;
+  border: 0.2rem solid gray;
+  border-radius: 1rem;
+  background: rgba(80, 80, 80, 0.5);
+  box-shadow: 0 0 0.5rem black;
+  -webkit-backdrop-filter: blur(0.5rem);
+  backdrop-filter: blur(0.5rem);
+}
+aside input:hover {
+  background: rgba(80, 80, 80, 0.7);
+}
+aside input:active {
+  background: rgba(80, 80, 80, 0.9);
+}

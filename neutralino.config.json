@@ -1,0 +1,35 @@
+{
+  "applicationId": "top.messner.MinesLive",
+  "defaultMode": "window",
+  "port": 0,
+  "url": "/resources/",
+  "enableServer": true,
+  "enableNativeAPI": true,
+  "logging": {
+    "enabled": true,
+    "writeToLogFile": true
+  },
+  "nativeBlockList": [],
+  "globalVariables": {},
+  "modes": {
+    "window": {
+      "title": "Mines",
+      "fullScreen": false,
+      "alwaysOnTop": false,
+      "icon": "/resources/icon.png",
+      "enableInspector": true,
+      "borderless": false,
+      "maximize": false,
+      "hidden": true,
+      "resizable": true,
+      "exitProcessOnClose": true
+    }
+  },
+  "cli": {
+    "binaryName": "Mines",
+    "resourcesPath": "/resources/",
+    "clientLibrary": "/resources/neutralino.js",
+    "binaryVersion": "3.0.0",
+    "clientVersion": "2.0.0"
+  }
+}
